@@ -3,105 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FR Technology | AI Core</title>
+    <title>FR 科技 | AI 核心技術領航者</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            background-color: #0a0a0a; /* 極致深黑 */
-            color: #ffffff;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+        :root {
+            --primary: #00d2ff;
+            --accent: #3a7bd5;
+            --bg: #050505;
+            --card-bg: #111111;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
         }
 
-        /* 簡約導覽列 */
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* 導覽列 */
         header {
-            padding: 30px 10%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
         }
 
         .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: 4px;
-            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--primary);
         }
 
         nav a {
-            color: #888;
+            color: var(--text-dim);
             text-decoration: none;
             font-size: 0.9rem;
             margin-left: 30px;
-            transition: color 0.3s;
+            transition: 0.3s;
         }
 
         nav a:hover {
-            color: #00d4ff;
+            color: var(--primary);
         }
 
-        /* 主視覺區塊 */
-        main {
-            flex: 1;
-            padding: 100px 10%;
+        /* 英雄區塊 */
+        .hero {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            background: radial-gradient(circle at center, #111 0%, #050505 100%);
         }
 
-        .tagline {
-            color: #00d4ff;
-            font-size: 0.8rem;
-            letter-spacing: 3px;
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin: 0;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 30%, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 20px 0;
+        }
+
+        /* 核心業務區塊 */
+        .section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+        }
+
+        .section-title div {
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            margin: 15px auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+        }
+
+        .card i {
+            font-size: 2rem;
+            color: var(--primary);
             margin-bottom: 20px;
         }
 
-        h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            font-weight: 300;
-            line-height: 1.2;
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
         }
 
-        .description {
+        .card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        /* CEO 區塊 */
+        .ceo-section {
+            background-color: #0a0a0a;
+            padding: 80px 10%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .ceo-content {
+            text-align: center;
             max-width: 600px;
-            color: #888;
-            font-size: 1.1rem;
-            margin: 30px 0;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.02);
         }
 
-        /* 執行長資訊區 */
-        .ceo-box {
-            border-left: 1px solid #00d4ff;
-            padding-left: 20px;
-            margin-top: 50px;
-        }
-
-        .ceo-title {
-            color: #444;
+        .ceo-tag {
             font-size: 0.8rem;
+            color: var(--primary);
             text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
         .ceo-name {
-            font-size: 1.5rem;
-            margin-top: 5px;
-            letter-spacing: 1px;
+            font-size: 2.5rem;
+            margin: 10px 0;
+            font-weight: 300;
         }
 
         /* 頁尾 */
         footer {
-            padding: 40px 10%;
+            padding: 60px 10%;
+            background: #000;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.8rem;
-            color: #444;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-info p {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin: 5px 0;
         }
 
         /* 浮動 Discord 按鈕 */
@@ -109,59 +198,104 @@
             position: fixed;
             bottom: 40px;
             right: 40px;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 55px;
+            height: 55px;
+            background: #5865F2;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #fff;
+            color: white;
             text-decoration: none;
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
+            font-size: 26px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: 0.3s;
+            z-index: 999;
         }
 
         .discord-btn:hover {
-            background: #5865F2;
-            border-color: #5865F2;
-            transform: translateY(-5px);
+            transform: scale(1.1);
+            filter: brightness(1.2);
         }
 
+        @media (max-width: 768px) {
+            header { padding: 20px 5%; }
+            nav { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">FR TECH.</div>
+        <div class="logo">FR TECHNOLOGY</div>
         <nav>
-            <a href="#about">ABOUT</a>
-            <a href="#vision">VISION</a>
-            <a href="https://discord.gg/mns2Ra4Yt2">COMMUNITY</a>
+            <a href="#about">關於我們</a>
+            <a href="#solutions">解決方案</a>
+            <a href="#ceo">領導團隊</a>
         </nav>
     </header>
 
-    <main id="about">
-        <div class="tagline">ARTIFICIAL INTELLIGENCE CORE</div>
-        <h1>引領未來的<br>AI 核心驅動力</h1>
-        
-        <p class="description">
-            FR 科技致力於構建高效、純粹且具前瞻性的人工智慧解決方案。我們不只是處理數據，我們在定義下一個時代的溝通與運作邏輯。
-        </p>
+    <section class="hero">
+        <div class="tagline" style="color: var(--primary); letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 10px;">FUTURE REALIZED</div>
+        <h1>賦能 AI，重新定義未來</h1>
+        <p>FR 科技專注於研發前瞻性的人工智慧模型，為全球企業提供高效、精準、且具備自主學習能力的科技核心。</p>
+        <a href="#solutions" style="margin-top: 30px; padding: 12px 30px; border: 1px solid var(--primary); color: var(--primary); text-decoration: none; border-radius: 2px; font-size: 0.9rem;">查看技術細節</a>
+    </section>
 
-        <div class="ceo-box">
-            <div class="ceo-title">Chief Executive Officer</div>
-            <div class="ceo-name">ryfn888</div>
+    <section class="section" id="solutions">
+        <div class="section-title">
+            <h2>核心 AI 技術領域</h2>
+            <div></div>
         </div>
-    </main>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-brain"></i>
+                <h3>神經網路優化</h3>
+                <p>研發深層學習架構，顯著提升模型在複雜數據集下的運算速度與準確度，降低資源消耗。</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-microchip"></i>
+                <h3>邊緣運算 AI</h3>
+                <p>將 AI 部署於硬體前端，實現低延遲、高隱私的即時決策系統，適用於 IoT 與自動化工業。</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-language"></i>
+                <h3>語義理解引擎</h3>
+                <p>超越傳統 NLP，我們的引擎能精準捕捉人類情緒與語境，為智能客服與自動創作提供動力。</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-shield-halved"></i>
+                <h3>安全防禦系統</h3>
+                <p>利用對抗生成網路 (GAN) 技術，主動識別數位漏洞，構建固若金湯的企業 AI 安全屏障。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="ceo-section" id="ceo">
+        <div class="ceo-content">
+            <span class="ceo-tag">Chief Executive Officer</span>
+            <h2 class="ceo-name">ryfn888</h2>
+            <p style="color: var(--text-dim); font-style: italic;">
+                「在 FR 科技，我們不跟隨潮流，我們直接創造潮流。AI 不僅是代碼，它是我們解決問題的新感官。」
+            </p>
+        </div>
+    </section>
 
     <footer>
-        <div>&copy; 2026 FR TECHNOLOGY.</div>
-        <div>Discord: https://discord.gg/mns2Ra4Yt2</div>
+        <div class="footer-info">
+            <div class="logo" style="margin-bottom: 15px;">FR TECH.</div>
+            <p>引領 AI 核心技術的科技先鋒</p>
+            <p>聯絡信箱: contact@fr-tech.ai (範例)</p>
+        </div>
+        <div class="footer-info" style="text-align: right;">
+            <p>官方社群頻道</p>
+            <p>Discord: <a href="https://discord.gg/mns2Ra4Yt2" style="color: var(--primary); text-decoration: none;">加入討論區</a></p>
+            <p style="margin-top: 15px; opacity: 0.5;">&copy; 2026 FR TECHNOLOGY. 繁體中文版</p>
+        </div>
     </footer>
 
-    <a href="https://discord.gg/mns2Ra4Yt2" class="discord-btn" target="_blank" title="Join Discord">
+    <a href="https://discord.gg/mns2Ra4Yt2" class="discord-btn" target="_blank" title="與我們交流">
         <i class="fab fa-discord"></i>
     </a>
 
