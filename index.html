@@ -3,272 +3,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FR Technology | AI Core</title>
+    <title>FR 科技 | AI 核心技術領航者</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #00d4ff;
-            --favo-gradient: linear-gradient(135deg, #00d4ff 0%, #0072ff 100%);
+            --primary: #00d2ff;
+            --accent: #3a7bd5;
+            --bg: #050505;
+            --card-bg: #111111;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #0a0a0a; /* 極致深黑 */
-            color: #ffffff;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            line-height: 1.8;
             overflow-x: hidden;
         }
 
-        /* 簡約導覽列 */
+        /* 導覽列 */
         header {
-            padding: 30px 10%;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            z-index: 100;
+            z-index: 1000;
         }
 
         .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: 4px;
-            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
         }
 
         nav a {
-            color: #888;
+            color: var(--text-dim);
             text-decoration: none;
             font-size: 0.9rem;
             margin-left: 30px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover { color: var(--primary); }
-
-        /* 主視覺區塊 */
-        main {
-            flex: 1;
-            padding: 100px 10%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .tagline {
-            color: var(--primary);
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            font-weight: 300;
-            line-height: 1.2;
-        }
-
-        .description {
-            max-width: 600px;
-            color: #888;
-            font-size: 1.1rem;
-            margin: 30px 0;
-        }
-
-        /* 執行長資訊區 */
-        .ceo-box {
-            border-left: 1px solid var(--primary);
-            padding-left: 20px;
-            margin-top: 50px;
-        }
-
-        .ceo-title {
-            color: #444;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-        }
-
-        .ceo-name {
-            font-size: 1.5rem;
-            margin-top: 5px;
+            transition: 0.3s;
             letter-spacing: 1px;
         }
 
-        /* --- 火光環防禦粒子 --- */
-        .fire-particle {
-            position: fixed; width: 6px; height: 6px;
-            background: var(--primary); border-radius: 50%;
-            pointer-events: none; z-index: 9999;
-            box-shadow: 0 0 12px var(--primary);
-            transition: transform 0.6s cubic-bezier(0, .5, .5, 1), opacity 0.6s;
+        nav a:hover {
+            color: var(--primary);
         }
 
-        /* --- FAVO 2 懸浮圖標 --- */
-        #favo-trigger {
-            position: fixed; bottom: 110px; right: 40px;
-            width: 65px; height: 65px; background: var(--favo-gradient);
-            border-radius: 15px; display: flex; justify-content: center; align-items: center;
-            color: #fff; cursor: pointer; z-index: 1001;
-            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
-            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1);
+        /* 英雄區塊 */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            background: radial-gradient(circle at 50% 50%, #151515 0%, #050505 100%);
         }
-        #favo-trigger span { font-size: 10px; font-weight: 900; letter-spacing: 1px; }
-        #favo-trigger:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 30px rgba(0, 212, 255, 0.4); }
 
-        /* FAVO 對話視窗 */
-        #favo-window {
-            position: fixed; bottom: 105px; right: 120px;
-            width: 350px; height: 500px; background: #111;
-            border: 1px solid #222; border-radius: 12px;
-            display: none; flex-direction: column; overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5); z-index: 2000;
+        .hero h1 {
+            font-size: clamp(2.8rem, 8vw, 4.5rem);
+            margin: 0;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 40%, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
         }
-        .favo-header { background: #1a1a1a; padding: 15px; font-size: 11px; letter-spacing: 2px; color: var(--primary); border-bottom: 1px solid #222; }
-        #favo-chat { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
-        .msg { padding: 8px 12px; border-radius: 8px; max-width: 80%; line-height: 1.5; }
-        .msg-ai { background: #222; align-self: flex-start; color: #ccc; }
-        .msg-user { background: var(--primary); align-self: flex-end; color: #000; font-weight: 500; }
-        .favo-input { padding: 15px; background: #1a1a1a; display: flex; gap: 8px; border-top: 1px solid #222; }
-        .favo-input input { flex: 1; background: #000; border: 1px solid #333; color: #fff; padding: 8px; border-radius: 4px; outline: none; }
-        .favo-input button { background: var(--primary); border: none; padding: 0 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 800px;
+            margin: 30px 0;
+        }
+
+        /* 通用區塊樣式 */
+        .section {
+            padding: 120px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        /* 核心技術卡片 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 50px 40px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-15px);
+            background: rgba(255, 255, 255, 0.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+
+        .card h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--text-dim);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* 進程區塊 */
+        .process {
+            background: #080808;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .step-num {
+            font-size: 3rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.05);
+            margin-bottom: -40px;
+        }
+
+        /* CEO 區塊 */
+        .ceo-section {
+            background: linear-gradient(180deg, #050505 0%, #0f0f0f 100%);
+            padding: 120px 10%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .ceo-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 60px;
+            border: 1px solid rgba(0, 210, 255, 0.1);
+            background: var(--glass);
+            border-radius: 4px;
+        }
+
+        .ceo-name {
+            font-size: 3rem;
+            margin: 15px 0;
+            font-weight: 200;
+            letter-spacing: 5px;
+        }
 
         /* 頁尾 */
         footer {
-            padding: 40px 10%;
+            padding: 80px 10% 40px;
+            background: #000;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.8rem;
-            color: #444;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 40px;
         }
 
-        /* 浮動 Discord 按鈕 */
+        .footer-left h2 { margin-bottom: 20px; }
+
+        .footer-right { text-align: right; }
+
+        /* Discord 浮動 */
         .discord-btn {
-            position: fixed; bottom: 40px; right: 40px;
-            width: 50px; height: 50px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            background: #5865F2;
             border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            color: #fff; text-decoration: none; backdrop-filter: blur(5px);
-            transition: all 0.3s ease; z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            font-size: 28px;
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4);
+            transition: 0.3s;
+            z-index: 1000;
         }
-        .discord-btn:hover { background: #5865F2; border-color: #5865F2; transform: translateY(-5px); }
+
+        .discord-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        @media (max-width: 768px) {
+            .footer-right { text-align: left; }
+            .hero h1 { font-size: 2.8rem; }
+            header { padding: 20px 5%; }
+            nav { display: none; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">FR TECH.</div>
+        <div class="logo">FR TECHNOLOGY</div>
         <nav>
-            <a href="#about">ABOUT</a>
-            <a href="#vision">VISION</a>
-            <a href="https://discord.gg/mns2Ra4Yt2">COMMUNITY</a>
+            <a href="#about">關於我們</a>
+            <a href="#tech">專業領域</a>
+            <a href="#vision">技術優勢</a>
+            <a href="#ceo">主理人</a>
         </nav>
     </header>
 
-    <main id="about">
-        <div class="tagline">ARTIFICIAL INTELLIGENCE CORE</div>
-        <h1>引領未來的<br>AI 核心驅動力</h1>
-        
-        <p class="description">
-            FR 科技致力於構建高效、純粹且具前瞻性的人工智慧解決方案。我們不只是處理數據，我們在定義下一個時代的溝通與運作邏輯。
-        </p>
-
-        <div class="ceo-box">
-            <div class="ceo-title">Chief Executive Officer</div>
-            <div class="ceo-name">ryfn888</div>
+    <section class="hero" id="about">
+        <span>ESTABLISHED 2026</span>
+        <h1>釋放 AI 潛能<br>驅動智慧革命</h1>
+        <p>FR 科技是一間以人工智慧為研發核心的頂尖技術公司。我們致力於將複雜的 AI 演算法轉化為直覺、高效的解決方案，幫助企業與開發者在自動化時代掌握核心競爭力。</p>
+        <div style="margin-top: 40px;">
+            <a href="#tech" style="padding: 15px 40px; background: var(--primary); color: #000; text-decoration: none; font-weight: bold; border-radius: 2px;">技術白皮書</a>
         </div>
-    </main>
+    </section>
 
-    <div id="favo-trigger" onclick="toggleFavo()"><span>FAVO2</span></div>
+    <section class="section" id="tech">
+        <div class="section-title">
+            <span>OUR CORE SERVICE</span>
+            <h2>三大 AI 科技版圖</h2>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-brain"></i>
+                <h3>深度學習與模型優化</h3>
+                <p>我們專精於大型語言模型（LLM）的微調與優化，提供高效能、低延遲的推論架構，讓 AI 運算更貼近商業實務需求。</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-robot"></i>
+                <h3>智能自動化流程</h3>
+                <p>結合機器視覺與自然語言處理，我們構建能自動執行複雜任務的 AI Agent，大幅降低人力成本並提升生產效率。</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-database"></i>
+                <h3>大數據預測分析</h3>
+                <p>運用先進的演算法從海量數據中挖掘潛在趨勢，為企業決策提供科學化的預測模型與精準的市場洞察。</p>
+            </div>
+        </div>
+    </section>
 
-    <div id="favo-window">
-        <div class="favo-header">FAVO CORE v2.6 // SECURITY ACTIVE</div>
-        <div id="favo-chat">
-            <div class="msg msg-ai">執行長你好，系統核心已加載。防禦協議處於待命狀態。</div>
+    <section class="section" id="vision" style="background: #080808;">
+        <div class="section-title">
+            <span>WHY FR TECHNOLOGY</span>
+            <h2>為什麼選擇 FR 科技？</h2>
         </div>
-        <div class="favo-input">
-            <input type="text" id="f-inp" placeholder="輸入指令..." onkeydown="if(event.key==='Enter') sendFavo()">
-            <button onclick="sendFavo()">RUN</button>
+        <div class="process">
+            <div class="step">
+                <div class="step-num">01</div>
+                <h3>極致效能</h3>
+                <p>我們的代碼架構經過深度優化，確保 AI 模型在有限資源下發揮最大戰力。</p>
+            </div>
+            <div class="step">
+                <div class="step-num">02</div>
+                <h3>靈活客製</h3>
+                <p>拒絕罐頭方案，針對不同應用場景量身打造專屬的 AI 核心邏輯。</p>
+            </div>
+            <div class="step">
+                <div class="step-num">03</div>
+                <h3>透明安全</h3>
+                <p>堅持數據隱私第一，所有的開發流程均符合國際資訊安全標準。</p>
+            </div>
+            <div class="step">
+                <div class="step-num">04</div>
+                <h3>永續更新</h3>
+                <p>AI 技術日新月異，我們的系統具備自我修復與持續迭代的特性。</p>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <section class="ceo-section" id="ceo">
+        <div class="ceo-content">
+            <span style="color: var(--primary); letter-spacing: 5px;">CHIEF EXECUTIVE OFFICER</span>
+            <h2 class="ceo-name">ryfn888</h2>
+            <div style="width: 30px; height: 2px; background: var(--primary); margin: 30px auto;"></div>
+            <p style="font-size: 1.2rem; line-height: 2; color: #ccc;">
+                「在 FR 科技，我們追求的不只是自動化，而是人類智慧的延伸。我們的任務是將未來的科技，落實在今天的代碼之中。」
+            </p>
+        </div>
+    </section>
 
     <footer>
-        <div>&copy; 2026 FR TECHNOLOGY.</div>
-        <div>Discord: https://discord.gg/mns2Ra4Yt2</div>
+        <div class="footer-left">
+            <h2 class="logo">FR TECH.</h2>
+            <p style="color: var(--text-dim); max-width: 400px;">引領繁體中文市場的 AI 技術先鋒。專注研發、追求卓越、共創未來。</p>
+        </div>
+        <div class="footer-right">
+            <p style="font-weight: bold; color: #fff;">加入FR社群</p>
+            <p>Discord: <a href="https://discord.gg/mns2Ra4Yt2" style="color: var(--primary); text-decoration: none;">點此進入官方頻道</a></p>
+            <p style="margin-top: 40px; font-size: 0.7rem; color: #333;">&copy; 2026 FR TECHNOLOGY. ALL RIGHTS RESERVED. 繁體中文官方網站</p>
+        </div>
     </footer>
 
-    <a href="https://discord.gg/mns2Ra4Yt2" class="discord-btn" target="_blank" title="Join Discord">
+    <a href="https://discord.gg/mns2Ra4Yt2" class="discord-btn" target="_blank" title="與我們交流">
         <i class="fab fa-discord"></i>
     </a>
 
-    <script>
-        const WH = "https://discord.com/api/webhooks/1487280772187689060/J60BaNv4ZAFn4nJpSX8ieWP9WnqU1MPLrLJRAMqSVSOj3T9iZfQGuw5b6b31hafiH8Qq";
-
-        // 🛡️ 火光環防禦系統
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            const x = e.clientX, y = e.clientY;
-            const pCount = 12;
-            for (let i = 0; i < pCount; i++) {
-                const p = document.createElement('div');
-                p.className = 'fire-particle';
-                p.style.left = x + 'px'; p.style.top = y + 'px';
-                document.body.appendChild(p);
-                const a = (i / pCount) * Math.PI * 2;
-                const dx = Math.cos(a) * 60, dy = Math.sin(a) * 60;
-                requestAnimationFrame(() => {
-                    p.style.transform = `translate(${dx}px, ${dy}px) scale(0)`;
-                    p.style.opacity = '0';
-                });
-                setTimeout(() => p.remove(), 600);
-            }
-            if(document.getElementById('favo-window').style.display !== 'flex') toggleFavo();
-            addMsg('ai', "🛡️ [ALERT]: 偵測到右鍵嘗試。防禦火光已觸發。");
-        });
-
-        // 🤖 FAVO 邏輯
-        function toggleFavo() {
-            const win = document.getElementById('favo-window');
-            win.style.display = (win.style.display === 'flex') ? 'none' : 'flex';
-        }
-
-        function addMsg(type, text) {
-            const chat = document.getElementById('favo-chat');
-            chat.innerHTML += `<div class="msg msg-${type}">${text}</div>`;
-            chat.scrollTop = chat.scrollHeight;
-        }
-
-        async function sendFavo() {
-            const inp = document.getElementById('f-inp');
-            const val = inp.value.trim();
-            if(!val) return;
-
-            addMsg('user', val);
-            inp.value = "";
-
-            try {
-                const prompt = `你是 Favo AI，由執行長 ryfn888 創立。請用繁體中文回覆。指令：${val}`;
-                const res = await fetch(`https://text.pollinations.ai/${encodeURIComponent(prompt)}?model=openai`);
-                let data = await res.text();
-                addMsg('ai', data.split("---")[0].replace(/OpenAI|GPT/gi, 'Favo').trim());
-                
-                // Webhook 同步
-                fetch(WH, {
-                    method: 'POST', headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        username: "FR Tech Monitor",
-                        content: `**執行長指令**: ${val}`
-                    })
-                });
-            } catch(e) { addMsg('ai', "⚠️ 通訊異常。"); }
-        }
-    </script>
 </body>
 </html>
