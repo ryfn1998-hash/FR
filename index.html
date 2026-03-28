@@ -19,6 +19,9 @@
         * {
             box-sizing: border-box;
             scroll-behavior: smooth;
+            /* 禁用文字選取，增加防禦感 */
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         body {
@@ -118,7 +121,7 @@
             letter-spacing: 5px;
         }
 
-        /* 核心技術卡片 */
+        /* 卡片網格 */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -151,13 +154,7 @@
             font-size: 1.5rem;
         }
 
-        .card p {
-            color: var(--text-dim);
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-
-        /* 進程區塊 */
+        /* 流程/優勢區塊 */
         .process {
             background: #080808;
             display: flex;
@@ -216,11 +213,9 @@
             gap: 40px;
         }
 
-        .footer-left h2 { margin-bottom: 20px; }
-
         .footer-right { text-align: right; }
 
-        /* Discord 浮動 */
+        /* Discord 浮動按鈕 - 加強顯示 */
         .discord-btn {
             position: fixed;
             bottom: 40px;
@@ -232,33 +227,32 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
+            color: white !important;
             text-decoration: none;
             font-size: 28px;
-            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.4);
-            transition: 0.3s;
-            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(88, 101, 242, 0.5);
+            transition: all 0.3s ease;
+            z-index: 9999; /* 確保在最上層 */
         }
 
         .discord-btn:hover {
             transform: scale(1.1) rotate(10deg);
+            background: #4752c4;
         }
 
         @media (max-width: 768px) {
             .footer-right { text-align: left; }
-            .hero h1 { font-size: 2.8rem; }
             header { padding: 20px 5%; }
             nav { display: none; }
         }
     </style>
 </head>
-<body>
-
-    <header>
+<body oncontextmenu="return false;"> <header>
         <div class="logo">FR TECHNOLOGY</div>
         <nav>
             <a href="#about">關於我們</a>
             <a href="#tech">專業領域</a>
+            <a href="#projects">實作案例</a>
             <a href="#vision">技術優勢</a>
             <a href="#ceo">主理人</a>
         </nav>
@@ -267,32 +261,53 @@
     <section class="hero" id="about">
         <span>ESTABLISHED 2026</span>
         <h1>釋放 AI 潛能<br>驅動智慧革命</h1>
-        <p>FR 科技是一間以人工智慧為研發核心的頂尖技術公司。我們致力於將複雜的 AI 演算法轉化為直覺、高效的解決方案，幫助企業與開發者在自動化時代掌握核心競爭力。</p>
+        <p>FR 科技是一間以人工智慧為研發核心的頂尖技術團隊。我們專注於極限性能與實戰應用，將未來科技落實為今日的企業戰力。</p>
         <div style="margin-top: 40px;">
-            <a href="#tech" style="padding: 15px 40px; background: var(--primary); color: #000; text-decoration: none; font-weight: bold; border-radius: 2px;">技術白皮書</a>
+            <a href="#tech" style="padding: 15px 40px; background: var(--primary); color: #000; text-decoration: none; font-weight: bold; border-radius: 2px;">探索核心技術</a>
         </div>
     </section>
 
     <section class="section" id="tech">
         <div class="section-title">
-            <span>OUR CORE SERVICE</span>
+            <span>OUR EXPERTISE</span>
             <h2>三大 AI 科技版圖</h2>
         </div>
         <div class="grid">
             <div class="card">
-                <i class="fas fa-brain"></i>
-                <h3>深度學習與模型優化</h3>
-                <p>我們專精於大型語言模型（LLM）的微調與優化，提供高效能、低延遲的推論架構，讓 AI 運算更貼近商業實務需求。</p>
+                <i class="fas fa-microchip"></i>
+                <h3>模型優化與微調</h3>
+                <p>針對特定場景對 LLM 進行深度微調，在維持準確度的同時，大幅提升反應速度並降低運算成本。</p>
             </div>
             <div class="card">
-                <i class="fas fa-robot"></i>
-                <h3>智能自動化流程</h3>
-                <p>結合機器視覺與自然語言處理，我們構建能自動執行複雜任務的 AI Agent，大幅降低人力成本並提升生產效率。</p>
+                <i class="fas fa-user-shield"></i>
+                <h3>AI 安全防禦網</h3>
+                <p>研發對抗性攻擊防護系統，確保 AI 模型在運行時不會受到數據投毒或提示注入攻擊。</p>
             </div>
             <div class="card">
-                <i class="fas fa-database"></i>
-                <h3>大數據預測分析</h3>
-                <p>運用先進的演算法從海量數據中挖掘潛在趨勢，為企業決策提供科學化的預測模型與精準的市場洞察。</p>
+                <i class="fas fa-network-wired"></i>
+                <h3>自動化 Agent 群組</h3>
+                <p>構建多智能體協作系統 (Multi-Agent System)，實現從開發到維運的全鏈路無人化作業。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="projects" style="background: #0a0a0a;">
+        <div class="section-title">
+            <span>REAL-WORLD IMPACT</span>
+            <h2>AI 實務應用場景</h2>
+        </div>
+        <div class="grid">
+            <div class="card" style="background: rgba(255,255,255,0.01);">
+                <h4 style="color: var(--primary);">01. 智慧金融分析</h4>
+                <p>利用自主研發的預測引擎，幫助投資機構在海量非結構化數據中精準捕捉市場情緒波動。</p>
+            </div>
+            <div class="card" style="background: rgba(255,255,255,0.01);">
+                <h4 style="color: var(--primary);">02. 自動化程式碼審查</h4>
+                <p>AI 協作系統能實時掃描漏洞並提供修復建議，將軟體開發週期縮短至原有的 40%。</p>
+            </div>
+            <div class="card" style="background: rgba(255,255,255,0.01);">
+                <h4 style="color: var(--primary);">03. 邊緣運算視覺系統</h4>
+                <p>在超低功耗設備上實現毫秒級的人臉識別與行為分析，適用於未來智慧城市的安防建設。</p>
             </div>
         </div>
     </section>
@@ -306,22 +321,22 @@
             <div class="step">
                 <div class="step-num">01</div>
                 <h3>極致效能</h3>
-                <p>我們的代碼架構經過深度優化，確保 AI 模型在有限資源下發揮最大戰力。</p>
+                <p>我們對每一行代碼進行深度優化，確保 AI 模型在有限資源下發揮最大戰力。</p>
             </div>
             <div class="step">
                 <div class="step-num">02</div>
                 <h3>靈活客製</h3>
-                <p>拒絕罐頭方案，針對不同應用場景量身打造專屬的 AI 核心邏輯。</p>
+                <p>拒絕套板方案，針對不同應用場景量身打造專屬的 AI 核心邏輯。</p>
             </div>
             <div class="step">
                 <div class="step-num">03</div>
-                <h3>透明安全</h3>
-                <p>堅持數據隱私第一，所有的開發流程均符合國際資訊安全標準。</p>
+                <h3>數據主權</h3>
+                <p>堅持隱私優先，協助客戶部署私有化 AI 模型，確保企業數據不外流。</p>
             </div>
             <div class="step">
                 <div class="step-num">04</div>
-                <h3>永續更新</h3>
-                <p>AI 技術日新月異，我們的系統具備自我修復與持續迭代的特性。</p>
+                <h3>前瞻技術</h3>
+                <p>我們緊跟全球頂尖 AI 論文趨勢，將最新研究成果快速轉化為生產工具。</p>
             </div>
         </div>
     </section>
@@ -343,15 +358,37 @@
             <p style="color: var(--text-dim); max-width: 400px;">引領繁體中文市場的 AI 技術先鋒。專注研發、追求卓越、共創未來。</p>
         </div>
         <div class="footer-right">
-            <p style="font-weight: bold; color: #fff;">加入FR社群</p>
+            <p style="font-weight: bold; color: #fff;">加入 FR 社群</p>
             <p>Discord: <a href="https://discord.gg/mns2Ra4Yt2" style="color: var(--primary); text-decoration: none;">點此進入官方頻道</a></p>
-            <p style="margin-top: 40px; font-size: 0.7rem; color: #333;">&copy; 2026 FR TECHNOLOGY. ALL RIGHTS RESERVED. 繁體中文官方網站</p>
+            <p style="margin-top: 40px; font-size: 0.7rem; color: #333;">&copy; 2026 FR TECHNOLOGY. ALL RIGHTS RESERVED.</p>
         </div>
     </footer>
 
     <a href="https://discord.gg/mns2Ra4Yt2" class="discord-btn" target="_blank" title="與我們交流">
         <i class="fab fa-discord"></i>
     </a>
+
+    <script>
+        // 1. 進階右鍵防禦
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('系統保護中：FR 科技官網禁用右鍵功能');
+        }, false);
+
+        // 2. 禁用 F12 檢查元素 (可選，增加防禦感)
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123) { // F12
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { // Ctrl+Shift+I
+                return false;
+            }
+        };
+
+        // 3. 簡單控制台警示
+        console.log("%cFR TECHNOLOGY", "color: #00d2ff; font-size: 50px; font-weight: bold;");
+        console.log("%c系統處於監控狀態，請尊重技術原創。", "color: red; font-size: 20px;");
+    </script>
 
 </body>
 </html>
